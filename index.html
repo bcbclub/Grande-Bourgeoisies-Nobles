@@ -1,744 +1,788 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Grande Bourgeoisie Noble</title>
-
-    <meta name="description" content="Site officiel de la Grande Bourgeoisie Noble.">
-
-    <link rel="stylesheet" href="style.css">
-
-<style>
-:root {
-    --bg: #f5f5f2;
-    --surface: #ffffff;
-    --text: #111111;
-    --muted: #666660;
-    --line: #deded8;
-    --dark: #111111;
-    --accent: #d8c39a;
-}
-
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: var(--text);
-    background: var(--bg);
-    line-height: 1.5;
-}
-
-a {
-    color: inherit;
-}
-
-.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    padding: 16px 5vw;
-    background: rgba(255, 255, 255, .92);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid var(--line);
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    font-weight: 800;
-    letter-spacing: -.03em;
-}
-
-.brand-mark {
-    width: 40px;
-    height: 40px;
-    display: grid;
-    place-items: center;
-    border-radius: 12px;
-    background: var(--dark);
-    color: #fff;
-    font-size: 12px;
-    letter-spacing: -.03em;
-}
-
-.site-header nav {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-    font-size: 14px;
-    font-weight: 650;
-}
-
-.site-header nav a {
-    text-decoration: none;
-    transition: opacity .2s;
-}
-
-.site-header nav a:hover {
-    opacity: .55;
-}
-
-.hero {
-    min-height: 720px;
-    display: flex;
-    align-items: center;
-    background:
-        radial-gradient(circle at 85% 20%, rgba(216, 195, 154, .45), transparent 28%),
-        linear-gradient(135deg, #e9e8e2, #fafaf8 58%, #e2e0d8);
-}
-
-.hero-content {
-    width: min(1120px, 90vw);
-    margin: auto;
-    padding: 110px 0;
-}
-
-.eyebrow {
-    margin: 0 0 20px;
-    font-size: 11px;
-    font-weight: 850;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-}
-
-.hero h1 {
-    max-width: 950px;
-    margin: 0;
-    font-size: clamp(64px, 10vw, 138px);
-    line-height: .88;
-    letter-spacing: -.075em;
-}
-
-.hero h1 span {
-    font-weight: 400;
-}
-
-.hero-description {
-    max-width: 620px;
-    margin: 36px 0;
-    font-size: 20px;
-    color: #44443f;
-}
-
-.hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.button {
-    display: inline-block;
-    padding: 14px 22px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 750;
-    transition: transform .2s, opacity .2s;
-}
-
-.button:hover {
-    transform: translateY(-2px);
-}
-
-.button-primary {
-    background: #111;
-    color: #fff;
-}
-
-.button-secondary {
-    background: #fff;
-    border: 1px solid #cfcfc8;
-}
-
-.section {
-    width: min(1120px, 90vw);
-    margin: auto;
-    padding: 110px 0;
-}
-
-.movement {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-}
-
-.section h2 {
-    margin: 0 0 28px;
-    font-size: clamp(44px, 6vw, 78px);
-    line-height: .95;
-    letter-spacing: -.065em;
-}
-
-.movement .section-column:nth-child(2) {
-    padding-top: 38px;
-}
-
-.movement .section-column:nth-child(2) p {
-    max-width: 560px;
-    font-size: 19px;
-    color: var(--muted);
-}
-
-.text-link {
-    display: inline-block;
-    margin-top: 14px;
-    font-weight: 750;
-    text-decoration: none;
-}
-
-.project {
-    border-top: 1px solid var(--line);
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-}
-
-.card {
-    min-height: 285px;
-    padding: 30px;
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 25px;
-    transition: transform .2s, box-shadow .2s;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(0,0,0,.06);
-}
-
-.card span {
-    font-size: 12px;
-    font-weight: 850;
-}
-
-.card h3 {
-    margin: 75px 0 8px;
-    font-size: 28px;
-    letter-spacing: -.035em;
-}
-
-.card p {
-    margin: 0;
-    color: var(--muted);
-}
-
-.news {
-    width: 100%;
-    max-width: none;
-    padding-left: 5vw;
-    padding-right: 5vw;
-    background: #111;
-    color: #fff;
-}
-
-.section-heading {
-    width: min(1120px, 100%);
-    margin: 0 auto 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 30px;
-}
-
-.section-heading .text-link {
-    color: #fff;
-}
-
-.news-grid {
-    width: min(1120px, 100%);
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-}
-
-.news-card {
-    padding: 22px 0 0;
-    border-top: 1px solid #555;
-}
-
-.date {
-    margin: 0 0 22px;
-    font-size: 10px;
-    letter-spacing: .15em;
-    font-weight: 800;
-}
-
-.news-card h3 {
-    margin: 0 0 10px;
-    font-size: 27px;
-    letter-spacing: -.035em;
-}
-
-.news-card p:last-child {
-    color: #bdbdb7;
-}
-
-.documents {
-    border-bottom: 1px solid var(--line);
-}
-
-.document-list {
-    border-top: 1px solid #ccc;
-}
-
-.document-list a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    padding: 25px 0;
-    border-bottom: 1px solid #ccc;
-    text-decoration: none;
-    font-size: 19px;
-}
-
-.document-list strong {
-    font-size: 11px;
-    letter-spacing: .08em;
-}
-
-.contact {
-    padding: 105px 5vw;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 50px;
-    background: #dedbd1;
-}
-
-.contact > div {
-    max-width: 800px;
-}
-
-.contact p:not(.eyebrow) {
-    font-size: 18px;
-    color: #44443f;
-}
-
-.contact .button {
-    white-space: nowrap;
-}
-
-footer {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    padding: 35px 5vw;
-    background: #111;
-    color: #fff;
-    font-size: 13px;
-}
-
-@media(max-width: 800px) {
-    .site-header {
-        padding: 14px 5vw;
-    }
-
-    .site-header nav {
-        display: none;
-    }
-
-    .hero {
-        min-height: 620px;
-    }
-
-    .hero-content {
-        padding: 80px 0;
-    }
-
-    .hero-description {
-        font-size: 18px;
-    }
-
-    .section {
-        padding: 75px 0;
-    }
-
-    .movement,
-    .cards,
-    .news-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .movement .section-column:nth-child(2) {
-        padding-top: 0;
-    }
-
-    .section-heading {
-        display: block;
-    }
-
-    .section-heading .text-link {
-        margin-top: 0;
-    }
-
-    .card {
-        min-height: 220px;
-    }
-
-    .card h3 {
-        margin-top: 50px;
-    }
-
-    .contact {
-        display: block;
-        padding: 75px 5vw;
-    }
-
-    .contact .button {
-        margin-top: 15px;
-    }
-
-    footer {
-        display: block;
-    }
-
-    footer span {
-        display: block;
-        margin-top: 8px;
-    }
-}
-</style>
-
+    <title>Grande Bourgeoisie Noble — Un mouvement pour l'avenir</title>
+    <meta name="description" content="Site officiel de la Grande Bourgeoisie Noble. Un mouvement, une vision, des engagements concrets.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            orange: '#FF5200',
+                            orangeHover: '#E04400',
+                            navy: '#0F172A',
+                            navyLight: '#1E293B',
+                            gold: '#D8C39A',
+                            cream: '#FAF9F5',
+                            accent: '#2563EB'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF9F5;
+            color: #0F172A;
+            overflow-x: hidden;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #0F172A 30%, #FF5200 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-qs-pattern {
+            background-image: radial-gradient(rgba(255, 82, 0, 0.12) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+
+        .shadow-glow {
+            box-shadow: 0 10px 30px -10px rgba(255, 82, 0, 0.3);
+        }
+
+        .tab-btn.active {
+            background-color: #FF5200;
+            color: #FFFFFF;
+            border-color: #FF5200;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+    </style>
 </head>
+<body class="antialiased text-slate-900 bg-[#FAF9F5]">
 
-<body>
+    <aside aria-label="Annonces" class="bg-brand-navy text-white text-xs font-semibold py-2.5 px-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-2">
+                <span class="bg-brand-orange text-white px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider">Direct</span>
+                <span>Campagne 2026 : Présentation de notre manifeste pour les territoires</span>
+            </div>
+            <div class="flex items-center gap-4 text-slate-300">
+                <a href="#documents" class="hover:text-white transition-colors flex items-center gap-1">
+                    <i class="fa-solid fa-file-pdf text-brand-orange"></i> Télécharger la synthèse
+                </a>
+                <span class="hidden md:inline text-slate-600">|</span>
+                <a href="#contact" class="hidden md:inline hover:text-white transition-colors">Rejoindre notre réseau local</a>
+            </div>
+        </div>
+    </aside>
 
-<header class="site-header">
-
-    <a href="#accueil" class="brand">
-        <span class="brand-mark">GBN</span>
-        <span>Grande Bourgeoisie Noble</span>
-    </a>
-
-    <nav aria-label="Navigation principale">
-        <a href="#mouvement">Le mouvement</a>
-        <a href="#projet">Le projet</a>
-        <a href="#actualites">Actualités</a>
-        <a href="#documents">Documents</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-</header>
-
-
-<main id="accueil">
-
-    <!-- HERO -->
-
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <p class="eyebrow">
-                GRANDE BOURGEOISIE NOBLE
-            </p>
-
-            <h1>
-                Un mouvement.<br>
-                <span>Un projet.</span>
-            </h1>
-
-            <p class="hero-description">
-                Découvrez la Grande Bourgeoisie Noble,
-                son projet, ses textes et ses publications.
-            </p>
-
-            <div class="hero-actions">
-
-                <a href="#projet" class="button button-primary">
-                    Découvrir le projet
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 bg-brand-orange text-white font-extrabold rounded-2xl flex items-center justify-center text-lg shadow-md group-hover:scale-105 transition-transform duration-200">
+                        GBN
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-lg sm:text-xl tracking-tight leading-none text-brand-navy group-hover:text-brand-orange transition-colors">
+                            Grande Bourgeoisie Noble
+                        </span>
+                        <span class="text-xs font-semibold uppercase tracking-widest text-slate-400 mt-0.5">
+                            Le Mouvement Citoyen
+                        </span>
+                    </div>
                 </a>
 
-                <a href="#actualites" class="button button-secondary">
-                    Nos actualités
-                </a>
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center gap-8 text-sm font-bold text-slate-700">
+                    <a href="#mouvement" class="hover:text-brand-orange transition-colors py-2">Le Mouvement</a>
+                    <a href="#programme" class="hover:text-brand-orange transition-colors py-2">Nos Engagements</a>
+                    <a href="#actualites" class="hover:text-brand-orange transition-colors py-2">Actualités</a>
+                    <a href="#documents" class="hover:text-brand-orange transition-colors py-2">Publications</a>
+                    <a href="#contact" class="hover:text-brand-orange transition-colors py-2">Contact</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <button onclick="openModal('rejoindre')" class="px-5 py-2.5 rounded-full border-2 border-brand-navy text-brand-navy font-bold text-sm hover:bg-brand-navy hover:text-white transition-all duration-200">
+                        Rejoindre
+                    </button>
+                    <button onclick="openModal('don')" class="px-5 py-2.5 rounded-full bg-brand-orange text-white font-bold text-sm hover:bg-brand-orangeHover shadow-glow hover:scale-105 transition-all duration-200 flex items-center gap-2">
+                        <i class="fa-solid fa-heart"></i> Faire un don
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-toggle" aria-label="Ouvrir le menu de navigation" class="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-4">
+            <nav class="flex flex-col gap-3 font-bold text-slate-800">
+                <a href="#mouvement" class="mobile-link py-2 border-b border-slate-100">Le Mouvement</a>
+                <a href="#programme" class="mobile-link py-2 border-b border-slate-100">Nos Engagements</a>
+                <a href="#actualites" class="mobile-link py-2 border-b border-slate-100">Actualités</a>
+                <a href="#documents" class="mobile-link py-2 border-b border-slate-100">Publications</a>
+                <a href="#contact" class="mobile-link py-2 border-b border-slate-100">Contact</a>
+            </nav>
+            <div class="flex flex-col gap-2 pt-2">
+                <button onclick="openModal('rejoindre')" class="w-full py-3 rounded-xl border-2 border-brand-navy text-brand-navy font-bold text-center">
+                    Rejoindre le mouvement
+                </button>
+                <button onclick="openModal('don')" class="w-full py-3 rounded-xl bg-brand-orange text-white font-bold text-center shadow-glow flex justify-center items-center gap-2">
+                    <i class="fa-solid fa-heart"></i> Faire un don
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="accueil">
+
+        <section class="relative bg-qs-pattern py-12 md:py-20 lg:py-24 border-b border-slate-200 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-8">
+                        
+                        <div class="inline-flex items-center gap-2 bg-brand-orange/10 border border-brand-orange/20 text-brand-orange px-4 py-1.5 rounded-full font-bold text-xs uppercase tracking-widest">
+                            <span class="w-2 h-2 rounded-full bg-brand-orange animate-ping"></span>
+                            Projet de Société 2026
+                        </div>
+
+                        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-brand-navy leading-[1.05]">
+                            Construire un avenir <br>
+                            <span class="text-brand-orange underline decoration-4 underline-offset-8">audacieux</span> & solidaire.
+                        </h1>
+
+                        <p class="text-lg sm:text-xl text-slate-600 max-w-2xl font-medium leading-relaxed">
+                            La Grande Bourgeoisie Noble incarne une nouvelle dynamique citoyenne : l'alliance de l'excellence démocratique, du progrès économique et de la justice territoriale.
+                        </p>
+
+                        <!-- Call To Actions -->
+                        <div class="flex flex-wrap items-center gap-4 pt-2">
+                            <a href="#programme" class="px-8 py-4 rounded-full bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-base shadow-glow hover:translate-y-[-2px] transition-all flex items-center gap-3">
+                                Explorer le programme
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a href="#mouvement" class="px-8 py-4 rounded-full bg-white hover:bg-slate-100 text-brand-navy border border-slate-300 font-extrabold text-base hover:translate-y-[-2px] transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-circle-play text-brand-orange"></i>
+                                Revoir le discours
+                            </a>
+                        </div>
+
+                        <!-- Key Stats Pill Bar -->
+                        <div class="pt-6 grid grid-cols-3 gap-4 border-t border-slate-200 max-w-lg">
+                            <div>
+                                <p class="text-2xl sm:text-3xl font-extrabold text-brand-navy">100%</p>
+                                <p class="text-xs font-semibold text-slate-500">Engagé pour le citoyen</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl sm:text-3xl font-extrabold text-brand-orange">24/7</p>
+                                <p class="text-xs font-semibold text-slate-500">Présence sur le terrain</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl sm:text-3xl font-extrabold text-brand-navy">35+</p>
+                                <p class="text-xs font-semibold text-slate-500">Propositions concrètes</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Hero Media Visual -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-brand-navy group">
+                            <!-- Visual Graphic Overlay -->
+                            <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Rassemblement politique" 
+                                 class="w-full h-[480px] object-cover opacity-90 group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent"></div>
+                            
+                            <!-- Floating Card Overlay -->
+                            <div class="absolute bottom-6 left-6 right-6 p-6 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-100 shadow-lg">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="p-2 bg-brand-orange/10 text-brand-orange rounded-lg">
+                                        <i class="fa-solid fa-bullhorn"></i>
+                                    </span>
+                                    <span class="text-xs font-bold text-brand-orange uppercase tracking-wider">Manifeste 2026</span>
+                                </div>
+                                <h2 class="text-lg font-extrabold text-brand-navy leading-snug">
+                                    « L'excellence et le sens du service public doivent redevenir le cœur de notre contrat social. »
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="mouvement" class="py-16 sm:py-24 bg-white border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-orange text-xs font-extrabold uppercase tracking-widest bg-brand-orange/10 px-4 py-1.5 rounded-full">
+                        Identité & Valeurs
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-navy mt-4 tracking-tight">
+                        Un mouvement d'action, libre et indépendant.
+                    </h2>
+                    <p class="text-slate-600 text-lg mt-4 font-medium">
+                        La Grande Bourgeoisie Noble réinvente la participation démocratique en plaçant la rigueur, le travail et l'équité au centre du débat public.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <!-- Value Card 1 -->
+                    <div class="p-8 rounded-3xl bg-[#FAF9F5] border border-slate-200 hover:border-brand-orange transition-all duration-300 group hover:shadow-xl">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-landmark"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-navy mb-3">Institutions Fortes</h3>
+                        <p class="text-slate-600 leading-relaxed font-medium">
+                            Garantir la stabilité démocratique, restaurer l'autorité des services publics et moderniser la décision républicaine.
+                        </p>
+                    </div>
+
+                    <!-- Value Card 2 -->
+                    <div class="p-8 rounded-3xl bg-[#FAF9F5] border border-slate-200 hover:border-brand-orange transition-all duration-300 group hover:shadow-xl">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-navy text-white flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-navy mb-3">Souveraineté Économique</h3>
+                        <p class="text-slate-600 leading-relaxed font-medium">
+                            Valoriser le travail, soutenir l'entrepreneuriat responsable et assurer une prospérité redistribuée équitablement.
+                        </p>
+                    </div>
+
+                    <!-- Value Card 3 -->
+                    <div class="p-8 rounded-3xl bg-[#FAF9F5] border border-slate-200 hover:border-brand-orange transition-all duration-300 group hover:shadow-xl">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-navy mb-3">Solidarité & Noblesse d'Esprit</h3>
+                        <p class="text-slate-600 leading-relaxed font-medium">
+                            Promouvoir la fraternité active, la transmission culturelle et la protection des plus vulnérables.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="programme" class="py-16 sm:py-24 bg-[#FAF9F5] border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <span class="text-brand-orange text-xs font-extrabold uppercase tracking-widest bg-brand-orange/10 px-4 py-1.5 rounded-full">
+                            Notre Projet
+                        </span>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-navy mt-4 tracking-tight">
+                            Des réponses précises pour chaque défi.
+                        </h2>
+                    </div>
+                    <p class="text-slate-600 max-w-md font-medium">
+                        Découvrez nos propositions classées par thématiques majeures pour transformer notre société.
+                    </p>
+                </div>
+
+                <!-- Tab Buttons -->
+                <div class="flex flex-wrap gap-3 mb-10" id="tab-buttons">
+                    <button onclick="switchTab('all')" class="tab-btn active px-6 py-3 rounded-full border-2 border-slate-300 font-bold text-sm transition-all">
+                        Toutes les thématiques
+                    </button>
+                    <button onclick="switchTab('institutions')" class="tab-btn px-6 py-3 rounded-full border-2 border-slate-300 font-bold text-sm transition-all">
+                        🏛️ Institutions
+                    </button>
+                    <button onclick="switchTab('economie')" class="tab-btn px-6 py-3 rounded-full border-2 border-slate-300 font-bold text-sm transition-all">
+                        💼 Économie & Travail
+                    </button>
+                    <button onclick="switchTab('societe')" class="tab-btn px-6 py-3 rounded-full border-2 border-slate-300 font-bold text-sm transition-all">
+                        🤝 Société & Culture
+                    </button>
+                </div>
+
+                <!-- Program Cards Grid -->
+                <div class="grid md:grid-cols-3 gap-6" id="programme-grid">
+                    
+                    <!-- Item 1 -->
+                    <article class="programme-item institutions p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-xs font-extrabold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full uppercase">Axe 01</span>
+                            <span class="text-slate-400 text-sm font-semibold">Institutions</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-navy mb-4">Réforme Parlementaire & Transparence</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Refonte des mécanismes de consultation citoyenne directe, garantissant l'éthique publique et la simplification législative.
+                        </p>
+                        <a href="#documents" class="text-brand-orange font-bold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all">
+                            Lire la fiche détaillée <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </article>
+
+                    <!-- Item 2 -->
+                    <article class="programme-item economie p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-xs font-extrabold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full uppercase">Axe 02</span>
+                            <span class="text-slate-400 text-sm font-semibold">Économie</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-navy mb-4">Investissement & Réindustrialisation</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Soutien massif aux filières stratégiques locales, exonérations ciblées pour la création d'emplois durables.
+                        </p>
+                        <a href="#documents" class="text-brand-orange font-bold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all">
+                            Lire la fiche détaillée <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </article>
+
+                    <!-- Item 3 -->
+                    <article class="programme-item societe p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-xs font-extrabold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full uppercase">Axe 03</span>
+                            <span class="text-slate-400 text-sm font-semibold">Société</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-navy mb-4">Pacte d'Équité Sociale & Éducation</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Revalorisation du rôle des enseignants, programmes d'excellence accessibles à tous et soutien aux familles.
+                        </p>
+                        <a href="#documents" class="text-brand-orange font-bold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all">
+                            Lire la fiche détaillée <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="actualites" class="py-16 sm:py-24 bg-brand-navy text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <span class="text-brand-orange text-xs font-extrabold uppercase tracking-widest bg-white/10 px-4 py-1.5 rounded-full">
+                            Fil d'actualité
+                        </span>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold mt-4 tracking-tight">
+                            Les dernières prises de parole.
+                        </h2>
+                    </div>
+                    <a href="#actualites" class="text-brand-orange font-bold hover:underline flex items-center gap-2">
+                        Voir toutes les actualités <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <!-- News 1 -->
+                    <article class="bg-brand-navyLight border border-slate-700 rounded-3xl p-6 flex flex-col justify-between hover:border-brand-orange transition-all">
+                        <div>
+                            <div class="flex items-center justify-between text-xs font-bold text-slate-400 mb-4">
+                                <span class="text-brand-orange uppercase">Communiqué</span>
+                                <span>25 Septembre 2026</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 hover:text-brand-orange transition-colors">
+                                Lancement officiel de la tournée territoriale de la Grande Bourgeoisie Noble
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                Notre équipe entame une série de 30 rencontres publiques pour échanger directement avec les citoyens et acteurs locaux.
+                            </p>
+                        </div>
+                        <a href="#actualites" class="text-xs font-extrabold uppercase tracking-wider text-white hover:text-brand-orange transition-colors flex items-center gap-2">
+                            Lire l'article <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </a>
+                    </article>
+
+                    <!-- News 2 -->
+                    <article class="bg-brand-navyLight border border-slate-700 rounded-3xl p-6 flex flex-col justify-between hover:border-brand-orange transition-all">
+                        <div>
+                            <div class="flex items-center justify-between text-xs font-bold text-slate-400 mb-4">
+                                <span class="text-brand-orange uppercase">Tribune</span>
+                                <span>18 Septembre 2026</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 hover:text-brand-orange transition-colors">
+                                Réinventer le modèle économique : vers une croissance à haute valeur humaine
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                Analyse approfondie des enjeux de compétitivité et de souveraineté économique pour la décennie à venir.
+                            </p>
+                        </div>
+                        <a href="#actualites" class="text-xs font-extrabold uppercase tracking-wider text-white hover:text-brand-orange transition-colors flex items-center gap-2">
+                            Lire la tribune <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </a>
+                    </article>
+
+                    <!-- News 3 -->
+                    <article class="bg-brand-navyLight border border-slate-700 rounded-3xl p-6 flex flex-col justify-between hover:border-brand-orange transition-all">
+                        <div>
+                            <div class="flex items-center justify-between text-xs font-bold text-slate-400 mb-4">
+                                <span class="text-brand-orange uppercase">Document</span>
+                                <span>10 Septembre 2026</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 hover:text-brand-orange transition-colors">
+                                Publication du Manifeste Fondateur & Déclaration de Principes
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                Retrouvez le texte intégral posant le socle éthique, politique et institutionnel de notre démarche.
+                            </p>
+                        </div>
+                        <a href="#documents" class="text-xs font-extrabold uppercase tracking-wider text-white hover:text-brand-orange transition-colors flex items-center gap-2">
+                            Télécharger le document <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </a>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="documents" class="py-16 sm:py-24 bg-white border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="max-w-3xl mb-12">
+                    <span class="text-brand-orange text-xs font-extrabold uppercase tracking-widest bg-brand-orange/10 px-4 py-1.5 rounded-full">
+                        Ressources Publiques
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-navy mt-4 tracking-tight">
+                        Consulter nos publications officielles.
+                    </h2>
+                </div>
+
+                <div class="divide-y divide-slate-200 border-y border-slate-200">
+                    
+                    <!-- Doc Item 1 -->
+                    <div class="py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50 px-4 rounded-2xl transition-colors">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center text-xl font-bold">
+                                <i class="fa-solid fa-file-pdf"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-brand-navy">Constitution & Statuts Officiels</h3>
+                                <p class="text-xs text-slate-500 font-semibold">Document officiel • Format PDF • 2.4 Mo</p>
+                            </div>
+                        </div>
+                        <button onclick="downloadDoc('Constitution Principale')" class="px-5 py-2.5 rounded-full bg-slate-100 hover:bg-brand-navy hover:text-white font-bold text-xs uppercase tracking-wider transition-all self-start sm:self-auto flex items-center gap-2">
+                            <i class="fa-solid fa-download"></i> Télécharger
+                        </button>
+                    </div>
+
+                    <!-- Doc Item 2 -->
+                    <div class="py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50 px-4 rounded-2xl transition-colors">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl font-bold">
+                                <i class="fa-solid fa-file-lines"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-brand-navy">Textes Fondateurs & Orientation Politique</h3>
+                                <p class="text-xs text-slate-500 font-semibold">Synthèse de programme • Format PDF • 1.8 Mo</p>
+                            </div>
+                        </div>
+                        <button onclick="downloadDoc('Textes Fondateurs')" class="px-5 py-2.5 rounded-full bg-slate-100 hover:bg-brand-navy hover:text-white font-bold text-xs uppercase tracking-wider transition-all self-start sm:self-auto flex items-center gap-2">
+                            <i class="fa-solid fa-download"></i> Télécharger
+                        </button>
+                    </div>
+
+                    <!-- Doc Item 3 -->
+                    <div class="py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50 px-4 rounded-2xl transition-colors">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl font-bold">
+                                <i class="fa-solid fa-box-archive"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-brand-navy">Archives & Communiqués de Presse (2026)</h3>
+                                <p class="text-xs text-slate-500 font-semibold">Dossier de presse complet • Format ZIP • 8.5 Mo</p>
+                            </div>
+                        </div>
+                        <button onclick="downloadDoc('Archive Communiqués')" class="px-5 py-2.5 rounded-full bg-slate-100 hover:bg-brand-navy hover:text-white font-bold text-xs uppercase tracking-wider transition-all self-start sm:self-auto flex items-center gap-2">
+                            <i class="fa-solid fa-download"></i> Télécharger
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 sm:py-24 bg-gradient-to-br from-brand-orange to-orange-600 text-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    
+                    <div>
+                        <span class="bg-white/20 text-white text-xs font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full">
+                            Passer à l'action
+                        </span>
+                        <h2 class="text-4xl sm:text-6xl font-extrabold mt-6 leading-tight">
+                            Votre voix compte. <br>Rejoignez le mouvement.
+                        </h2>
+                        <p class="text-orange-100 text-lg mt-6 font-medium max-w-lg">
+                            Inscrivez-vous pour recevoir nos publications, participer aux événements près de chez vous ou vous engager bénévolement.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Form Box -->
+                    <div class="bg-white text-slate-900 rounded-3xl p-8 shadow-2xl">
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Prénom & Nom</label>
+                                <input type="text" required placeholder="ex: Gabriel Attal" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Adresse E-mail</label>
+                                <input type="email" required placeholder="nom@exemple.fr" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Comment souhaitez-vous participer ?</label>
+                                <select class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-orange bg-white font-medium">
+                                    <option>Recevoir l'actualité et la newsletter</option>
+                                    <option>Devenir bénévole ou membre actif</option>
+                                    <option>Organiser un événement local</option>
+                                    <option>Contact presse ou partenariat</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-brand-navy hover:bg-slate-800 text-white font-extrabold text-base transition-all shadow-lg">
+                                Confirmer l'inscription →
+                            </button>
+                            <p class="text-[11px] text-slate-400 text-center">
+                                Vos données restent strictement confidentielles et protégées.
+                            </p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-brand-navy text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 bg-brand-orange text-white font-bold rounded-xl flex items-center justify-center text-sm">
+                            GBN
+                        </div>
+                        <span class="font-bold text-white text-lg">Grande Bourgeoisie Noble</span>
+                    </div>
+                    <p class="text-sm max-w-sm text-slate-400">
+                        Un mouvement politique citoyen dédié à l'excellence républicaine, à la justice sociale et à l'innovation territoriale.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Navigation</h4>
+                    <ul class="space-y-2 text-sm font-semibold">
+                        <li><a href="#mouvement" class="hover:text-white transition-colors">Le Mouvement</a></li>
+                        <li><a href="#programme" class="hover:text-white transition-colors">Nos Engagements</a></li>
+                        <li><a href="#actualites" class="hover:text-white transition-colors">Actualités</a></li>
+                        <li><a href="#documents" class="hover:text-white transition-colors">Documents</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Suivez-nous</h4>
+                    <div class="flex gap-3 text-lg">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-brand-orange hover:text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-brand-orange hover:text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-brand-orange hover:text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-brand-orange hover:text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
 
             </div>
 
-        </div>
-
-    </section>
-
-
-    <!-- LE MOUVEMENT -->
-
-    <section id="mouvement" class="section movement">
-
-        <div class="section-column">
-
-            <p class="eyebrow">
-                LE MOUVEMENT
-            </p>
-
-            <h2>
-                Grande Bourgeoisie Noble
-            </h2>
-
-        </div>
-
-        <div class="section-column">
-
-            <p>
-                La Grande Bourgeoisie Noble présente ici son
-                mouvement, ses principes, son organisation et
-                ses textes fondateurs.
-            </p>
-
-            <a href="#documents" class="text-link">
-                Consulter les documents →
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- PROJET -->
-
-    <section id="projet" class="section project">
-
-        <p class="eyebrow">
-            LE PROJET
-        </p>
-
-        <h2>
-            Nos grands axes
-        </h2>
-
-        <div class="cards">
-
-            <article class="card">
-                <span>01</span>
-                <h3>Institutions</h3>
-                <p>
-                    Présentation des propositions institutionnelles
-                    et de leur cadre.
-                </p>
-            </article>
-
-            <article class="card">
-                <span>02</span>
-                <h3>Économie</h3>
-                <p>
-                    Présentation des orientations économiques
-                    et des mesures proposées.
-                </p>
-            </article>
-
-            <article class="card">
-                <span>03</span>
-                <h3>Société</h3>
-                <p>
-                    Présentation des propositions concernant
-                    la vie collective.
-                </p>
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- ACTUALITÉS -->
-
-    <section id="actualites" class="section news">
-
-        <div class="section-heading">
-
-            <div>
-
-                <p class="eyebrow">
-                    ACTUALITÉS
-                </p>
-
-                <h2>
-                    Dernières publications
-                </h2>
-
+            <div class="pt-8 border-t border-slate-800 text-xs flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>© 2026 Grande Bourgeoisie Noble — Tous droits réservés.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:underline">Mentions légales</a>
+                    <a href="#" class="hover:underline">Politique de confidentialité</a>
+                    <a href="#" class="hover:underline">Gestion des cookies</a>
+                </div>
             </div>
-
-            <a href="#" class="text-link">
-                Toutes les actualités →
-            </a>
-
         </div>
+    </footer>
 
-
-        <div class="news-grid">
-
-            <article class="news-card">
-
-                <p class="date">
-                    25 SEPTEMBRE 2026
-                </p>
-
-                <h3>
-                    Présentation du mouvement
-                </h3>
-
-                <p>
-                    Une publication de présentation
-                    et d'information.
-                </p>
-
-            </article>
-
-
-            <article class="news-card">
-
-                <p class="date">
-                    2026
-                </p>
-
-                <h3>
-                    Textes et documents
-                </h3>
-
-                <p>
-                    Retrouvez les documents publics
-                    du mouvement.
-                </p>
-
-            </article>
-
-
-            <article class="news-card">
-
-                <p class="date">
-                    2026
-                </p>
-
-                <h3>
-                    À venir
-                </h3>
-
-                <p>
-                    Cette rubrique accueillera
-                    les prochaines publications.
-                </p>
-
-            </article>
-
+    <div id="modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl relative transform transition-all">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-800 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Injected via JS -->
+            </div>
         </div>
+    </div>
 
-    </section>
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-brand-navy text-white px-6 py-4 rounded-2xl shadow-2xl hidden items-center gap-3 border border-slate-700">
+        <i class="fa-solid fa-circle-check text-brand-orange text-xl"></i>
+        <span id="toast-message" class="font-bold text-sm">Action effectuée avec succès !</span>
+    </div>
 
+    <script>
+        // Toggle Mobile Navigation
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-    <!-- DOCUMENTS -->
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-    <section id="documents" class="section documents">
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
 
-        <p class="eyebrow">
-            DOCUMENTS
-        </p>
+        // Tab Filtering Logic
+        function switchTab(category) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            const items = document.querySelectorAll('.programme-item');
 
-        <h2>
-            Ressources publiques
-        </h2>
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
 
-        <div class="document-list">
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
 
-            <a href="#">
-                <span>
-                    Constitution principale
-                </span>
+        // Modal Handler
+        function openModal(type) {
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
 
-                <strong>
-                    PDF ↗
-                </strong>
-            </a>
+            if (type === 'don') {
+                content.innerHTML = `
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-brand-orange/10 text-brand-orange rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-brand-navy mb-2">Faire un don au mouvement</h3>
+                        <p class="text-slate-600 text-sm mb-6">Soutenez la Grande Bourgeoisie Noble pour financer nos actions de terrain et nos publications.</p>
+                        <div class="grid grid-cols-3 gap-3 mb-6">
+                            <button onclick="selectDon(20)" class="py-3 border-2 border-slate-200 rounded-2xl font-bold hover:border-brand-orange hover:bg-orange-50">20 €</button>
+                            <button onclick="selectDon(50)" class="py-3 border-2 border-brand-orange bg-orange-50 rounded-2xl font-bold text-brand-orange">50 €</button>
+                            <button onclick="selectDon(100)" class="py-3 border-2 border-slate-200 rounded-2xl font-bold hover:border-brand-orange hover:bg-orange-50">100 €</button>
+                        </div>
+                        <button onclick="confirmDon()" class="w-full py-4 rounded-xl bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-base shadow-glow">
+                            Procéder au paiement sécurisé
+                        </button>
+                    </div>
+                `;
+            } else {
+                content.innerHTML = `
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-brand-navy/10 text-brand-navy rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-brand-navy mb-2">Rejoindre le Mouvement</h3>
+                        <p class="text-slate-600 text-sm mb-6">Devenez membre actif et participez aux assemblées régionales.</p>
+                        <form onsubmit="confirmJoin(event)" class="space-y-4 text-left">
+                            <input type="text" placeholder="Nom complet" required class="w-full px-4 py-3 rounded-xl border border-slate-300">
+                            <input type="email" placeholder="E-mail" required class="w-full px-4 py-3 rounded-xl border border-slate-300">
+                            <button type="submit" class="w-full py-4 rounded-xl bg-brand-navy text-white font-extrabold text-base">
+                                Valider mon adhésion
+                            </button>
+                        </form>
+                    </div>
+                `;
+            }
 
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
 
-            <a href="#">
-                <span>
-                    Textes fondateurs
-                </span>
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
 
-                <strong>
-                    PDF ↗
-                </strong>
-            </a>
+        // Action Confirmations & Toast Notifications
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = msg;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 3500);
+        }
 
+        function confirmDon() {
+            closeModal();
+            showToast("Merci pour votre don et votre précieux soutien !");
+        }
 
-            <a href="#">
-                <span>
-                    Communiqués
-                </span>
+        function confirmJoin(e) {
+            e.preventDefault();
+            closeModal();
+            showToast("Bienvenue dans le mouvement ! Un email de confirmation vous a été envoyé.");
+        }
 
-                <strong>
-                    Archive ↗
-                </strong>
-            </a>
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            showToast("Votre inscription a bien été enregistrée.");
+            e.target.reset();
+        }
 
-        </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-
-    <section id="contact" class="contact">
-
-        <div>
-
-            <p class="eyebrow">
-                CONTACT
-            </p>
-
-            <h2>
-                Écrire au mouvement
-            </h2>
-
-            <p>
-                Retrouvez ici les coordonnées officielles
-                de la Grande Bourgeoisie Noble.
-            </p>
-
-        </div>
-
-        <a href="mailto:contact@example.com" class="button button-secondary">
-            Nous contacter
-        </a>
-
-    </section>
-
-</main>
-
-
-<footer>
-
-    <strong>
-        Grande Bourgeoisie Noble
-    </strong>
-
-    <span>
-        © 2026 — Tous droits réservés.
-    </span>
-
-</footer>
-
-
-<script src="script.js"></script>
-
+        function downloadDoc(docName) {
+            showToast("Téléchargement de : " + docName);
+        }
+    </script>
 </body>
 </html>
