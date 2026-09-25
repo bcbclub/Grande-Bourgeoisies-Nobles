@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grande Bourgeoisie Noble</title>
+
+    <meta name="description" content="Site officiel de la Grande Bourgeoisie Noble.">
+
+    <link rel="stylesheet" href="style.css">
+
+<style>
+:root {
+    --bg: #f5f5f2;
+    --surface: #ffffff;
+    --text: #111111;
+    --muted: #666660;
+    --line: #deded8;
+    --dark: #111111;
+    --accent: #d8c39a;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 16px 5vw;
+    background: rgba(255, 255, 255, .92);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--line);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    font-weight: 800;
+    letter-spacing: -.03em;
+}
+
+.brand-mark {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: var(--dark);
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: -.03em;
+}
+
+.site-header nav {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    font-size: 14px;
+    font-weight: 650;
+}
+
+.site-header nav a {
+    text-decoration: none;
+    transition: opacity .2s;
+}
+
+.site-header nav a:hover {
+    opacity: .55;
+}
+
+.hero {
+    min-height: 720px;
+    display: flex;
+    align-items: center;
+    background:
+        radial-gradient(circle at 85% 20%, rgba(216, 195, 154, .45), transparent 28%),
+        linear-gradient(135deg, #e9e8e2, #fafaf8 58%, #e2e0d8);
+}
+
+.hero-content {
+    width: min(1120px, 90vw);
+    margin: auto;
+    padding: 110px 0;
+}
+
+.eyebrow {
+    margin: 0 0 20px;
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    max-width: 950px;
+    margin: 0;
+    font-size: clamp(64px, 10vw, 138px);
+    line-height: .88;
+    letter-spacing: -.075em;
+}
+
+.hero h1 span {
+    font-weight: 400;
+}
+
+.hero-description {
+    max-width: 620px;
+    margin: 36px 0;
+    font-size: 20px;
+    color: #44443f;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.button {
+    display: inline-block;
+    padding: 14px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 750;
+    transition: transform .2s, opacity .2s;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.button-primary {
+    background: #111;
+    color: #fff;
+}
+
+.button-secondary {
+    background: #fff;
+    border: 1px solid #cfcfc8;
+}
+
+.section {
+    width: min(1120px, 90vw);
+    margin: auto;
+    padding: 110px 0;
+}
+
+.movement {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
+
+.section h2 {
+    margin: 0 0 28px;
+    font-size: clamp(44px, 6vw, 78px);
+    line-height: .95;
+    letter-spacing: -.065em;
+}
+
+.movement .section-column:nth-child(2) {
+    padding-top: 38px;
+}
+
+.movement .section-column:nth-child(2) p {
+    max-width: 560px;
+    font-size: 19px;
+    color: var(--muted);
+}
+
+.text-link {
+    display: inline-block;
+    margin-top: 14px;
+    font-weight: 750;
+    text-decoration: none;
+}
+
+.project {
+    border-top: 1px solid var(--line);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.card {
+    min-height: 285px;
+    padding: 30px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 25px;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(0,0,0,.06);
+}
+
+.card span {
+    font-size: 12px;
+    font-weight: 850;
+}
+
+.card h3 {
+    margin: 75px 0 8px;
+    font-size: 28px;
+    letter-spacing: -.035em;
+}
+
+.card p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.news {
+    width: 100%;
+    max-width: none;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    background: #111;
+    color: #fff;
+}
+
+.section-heading {
+    width: min(1120px, 100%);
+    margin: 0 auto 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+}
+
+.section-heading .text-link {
+    color: #fff;
+}
+
+.news-grid {
+    width: min(1120px, 100%);
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.news-card {
+    padding: 22px 0 0;
+    border-top: 1px solid #555;
+}
+
+.date {
+    margin: 0 0 22px;
+    font-size: 10px;
+    letter-spacing: .15em;
+    font-weight: 800;
+}
+
+.news-card h3 {
+    margin: 0 0 10px;
+    font-size: 27px;
+    letter-spacing: -.035em;
+}
+
+.news-card p:last-child {
+    color: #bdbdb7;
+}
+
+.documents {
+    border-bottom: 1px solid var(--line);
+}
+
+.document-list {
+    border-top: 1px solid #ccc;
+}
+
+.document-list a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 25px 0;
+    border-bottom: 1px solid #ccc;
+    text-decoration: none;
+    font-size: 19px;
+}
+
+.document-list strong {
+    font-size: 11px;
+    letter-spacing: .08em;
+}
+
+.contact {
+    padding: 105px 5vw;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 50px;
+    background: #dedbd1;
+}
+
+.contact > div {
+    max-width: 800px;
+}
+
+.contact p:not(.eyebrow) {
+    font-size: 18px;
+    color: #44443f;
+}
+
+.contact .button {
+    white-space: nowrap;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 35px 5vw;
+    background: #111;
+    color: #fff;
+    font-size: 13px;
+}
+
+@media(max-width: 800px) {
+    .site-header {
+        padding: 14px 5vw;
+    }
+
+    .site-header nav {
+        display: none;
+    }
+
+    .hero {
+        min-height: 620px;
+    }
+
+    .hero-content {
+        padding: 80px 0;
+    }
+
+    .hero-description {
+        font-size: 18px;
+    }
+
+    .section {
+        padding: 75px 0;
+    }
+
+    .movement,
+    .cards,
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .movement .section-column:nth-child(2) {
+        padding-top: 0;
+    }
+
+    .section-heading {
+        display: block;
+    }
+
+    .section-heading .text-link {
+        margin-top: 0;
+    }
+
+    .card {
+        min-height: 220px;
+    }
+
+    .card h3 {
+        margin-top: 50px;
+    }
+
+    .contact {
+        display: block;
+        padding: 75px 5vw;
+    }
+
+    .contact .button {
+        margin-top: 15px;
+    }
+
+    footer {
+        display: block;
+    }
+
+    footer span {
+        display: block;
+        margin-top: 8px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a href="#accueil" class="brand">
+        <span class="brand-mark">GBN</span>
+        <span>Grande Bourgeoisie Noble</span>
+    </a>
+
+    <nav aria-label="Navigation principale">
+        <a href="#mouvement">Le mouvement</a>
+        <a href="#projet">Le projet</a>
+        <a href="#actualites">Actualités</a>
+        <a href="#documents">Documents</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+
+<main id="accueil">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="eyebrow">
+                GRANDE BOURGEOISIE NOBLE
+            </p>
+
+            <h1>
+                Un mouvement.<br>
+                <span>Un projet.</span>
+            </h1>
+
+            <p class="hero-description">
+                Découvrez la Grande Bourgeoisie Noble,
+                son projet, ses textes et ses publications.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="#projet" class="button button-primary">
+                    Découvrir le projet
+                </a>
+
+                <a href="#actualites" class="button button-secondary">
+                    Nos actualités
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LE MOUVEMENT -->
+
+    <section id="mouvement" class="section movement">
+
+        <div class="section-column">
+
+            <p class="eyebrow">
+                LE MOUVEMENT
+            </p>
+
+            <h2>
+                Grande Bourgeoisie Noble
+            </h2>
+
+        </div>
+
+        <div class="section-column">
+
+            <p>
+                La Grande Bourgeoisie Noble présente ici son
+                mouvement, ses principes, son organisation et
+                ses textes fondateurs.
+            </p>
+
+            <a href="#documents" class="text-link">
+                Consulter les documents →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJET -->
+
+    <section id="projet" class="section project">
+
+        <p class="eyebrow">
+            LE PROJET
+        </p>
+
+        <h2>
+            Nos grands axes
+        </h2>
+
+        <div class="cards">
+
+            <article class="card">
+                <span>01</span>
+                <h3>Institutions</h3>
+                <p>
+                    Présentation des propositions institutionnelles
+                    et de leur cadre.
+                </p>
+            </article>
+
+            <article class="card">
+                <span>02</span>
+                <h3>Économie</h3>
+                <p>
+                    Présentation des orientations économiques
+                    et des mesures proposées.
+                </p>
+            </article>
+
+            <article class="card">
+                <span>03</span>
+                <h3>Société</h3>
+                <p>
+                    Présentation des propositions concernant
+                    la vie collective.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ACTUALITÉS -->
+
+    <section id="actualites" class="section news">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="eyebrow">
+                    ACTUALITÉS
+                </p>
+
+                <h2>
+                    Dernières publications
+                </h2>
+
+            </div>
+
+            <a href="#" class="text-link">
+                Toutes les actualités →
+            </a>
+
+        </div>
+
+
+        <div class="news-grid">
+
+            <article class="news-card">
+
+                <p class="date">
+                    25 SEPTEMBRE 2026
+                </p>
+
+                <h3>
+                    Présentation du mouvement
+                </h3>
+
+                <p>
+                    Une publication de présentation
+                    et d'information.
+                </p>
+
+            </article>
+
+
+            <article class="news-card">
+
+                <p class="date">
+                    2026
+                </p>
+
+                <h3>
+                    Textes et documents
+                </h3>
+
+                <p>
+                    Retrouvez les documents publics
+                    du mouvement.
+                </p>
+
+            </article>
+
+
+            <article class="news-card">
+
+                <p class="date">
+                    2026
+                </p>
+
+                <h3>
+                    À venir
+                </h3>
+
+                <p>
+                    Cette rubrique accueillera
+                    les prochaines publications.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- DOCUMENTS -->
+
+    <section id="documents" class="section documents">
+
+        <p class="eyebrow">
+            DOCUMENTS
+        </p>
+
+        <h2>
+            Ressources publiques
+        </h2>
+
+        <div class="document-list">
+
+            <a href="#">
+                <span>
+                    Constitution principale
+                </span>
+
+                <strong>
+                    PDF ↗
+                </strong>
+            </a>
+
+
+            <a href="#">
+                <span>
+                    Textes fondateurs
+                </span>
+
+                <strong>
+                    PDF ↗
+                </strong>
+            </a>
+
+
+            <a href="#">
+                <span>
+                    Communiqués
+                </span>
+
+                <strong>
+                    Archive ↗
+                </strong>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="contact">
+
+        <div>
+
+            <p class="eyebrow">
+                CONTACT
+            </p>
+
+            <h2>
+                Écrire au mouvement
+            </h2>
+
+            <p>
+                Retrouvez ici les coordonnées officielles
+                de la Grande Bourgeoisie Noble.
+            </p>
+
+        </div>
+
+        <a href="mailto:contact@example.com" class="button button-secondary">
+            Nous contacter
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <strong>
+        Grande Bourgeoisie Noble
+    </strong>
+
+    <span>
+        © 2026 — Tous droits réservés.
+    </span>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
