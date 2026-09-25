@@ -40,6 +40,10 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Leaflet CSS & JS pour la vue Satellite -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -538,6 +542,36 @@
             </div>
         </section>
 
+        <!-- Section Carte Satellite : Cherbourg-en-Cotentin -->
+        <section id="ancrage-cherbourg" class="py-16 sm:py-24 bg-[#FAF9F5] border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+                    <div>
+                        <span class="text-brand-orange text-xs font-extrabold uppercase tracking-widest bg-brand-orange/10 px-4 py-1.5 rounded-full inline-flex items-center gap-2">
+                            <i class="fa-solid fa-satellite"></i> Ancrage Territorial
+                        </span>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-navy mt-4 tracking-tight">
+                            Implantation Locale — Cherbourg-en-Cotentin
+                        </h2>
+                    </div>
+                    <p class="text-slate-600 max-w-md font-medium">
+                        Vue satellite du secteur stratégique de Cherbourg-en-Cotentin, hub maritime et industriel majeur.
+                    </p>
+                </div>
+
+                <!-- Carte Satellite Interactive -->
+                <div class="bg-white rounded-3xl p-4 shadow-xl border border-slate-200 relative overflow-hidden">
+                    <div id="cherbourg-satellite-map" class="w-full h-[450px] rounded-2xl z-10"></div>
+                    
+                    <!-- Overlay Badge Satellite -->
+                    <div class="absolute top-8 right-8 z-20 bg-brand-navy/90 text-white backdrop-blur-md px-4 py-2 rounded-xl text-xs font-bold shadow-lg flex items-center gap-2 border border-slate-700">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Vue Satellite HD — Cherbourg
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="contact" class="py-16 sm:py-24 bg-gradient-to-br from-brand-orange to-orange-600 text-white relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -559,7 +593,7 @@
                         <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Prénom & Nom</label>
-                                <input type="text" required placeholder="ex: Gabriel Attal" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                                <input type="text" required placeholder="Prénom/Nom complet" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-orange">
                             </div>
 
                             <div>
@@ -783,6 +817,42 @@
         function downloadDoc(docName) {
             showToast("Téléchargement de : " + docName);
         }
+
+        // Initialisation de la carte satellite de Cherbourg-en-Cotentin
+        document.addEventListener('DOMContentLoaded', () => {
+            const cherbourgCoords = [49.6337, -1.6222]; // Coordonnées de Cherbourg-en-Cotentin
+            
+            const map = L.map('cherbourg-satellite-map', {
+                center: cherbourgCoords,
+                zoom: 13,
+                zoomControl: true
+            });
+
+            // Layer Satellite Esri World Imagery
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+                maxZoom: 18
+            }).addTo(map);
+
+            // Noms de lieux et routes en superposé (Hybrid overlay)
+            L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}{r}.png', {
+                maxZoom: 18,
+                opacity: 0.6
+            });
+
+            // Marqueur sur Cherbourg-en-Cotentin
+            const customIcon = L.divIcon({
+                className: 'custom-map-pin',
+                html: `<div style="background-color: #FF5200; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.4);"><i class="fa-solid fa-location-dot"></i></div>`,
+                iconSize: [36, 36],
+                iconAnchor: [18, 18]
+            });
+
+            L.marker(cherbourgCoords, { icon: customIcon })
+                .addTo(map)
+                .bindPopup('<strong style="color:#0F172A;">Cherbourg-en-Cotentin</strong><br>Ancrage et permanence locale.')
+                .openPopup();
+        });
     </script>
 </body>
 </html>
